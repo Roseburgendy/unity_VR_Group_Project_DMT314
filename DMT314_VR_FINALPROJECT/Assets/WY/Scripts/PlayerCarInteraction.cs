@@ -32,19 +32,8 @@ public class PlayerCarInteraction : MonoBehaviour
         and set the player's parent to be the car in order to make
         the player move with the car
         */
-        player.transform.position = snapPointAboard.position;
-        player.transform.rotation = snapPointAboard.rotation;
-        player.transform.SetParent(snapPointAboard.parent);
-
-
-        // Trigger car animation
-        carAnimator.SetTrigger("DriveToGarage");
-
-        // Set destination to garage
-        carDestination = "garage";
-
-        // Start coroutine to show the "Get Off" UI after animation ends(reach the garage)
-        StartCoroutine(ShowUIAfterAnimation(driveToGarageClip.length, getOffUI));
+        // Snap the player to the car and wait before starting animation
+        StartCoroutine(SnapAndStartAnimation(snapPointAboard, "DriveToGarage", "garage", getOffUI, driveToGarageClip.length));
 
     }
 
@@ -82,19 +71,30 @@ public class PlayerCarInteraction : MonoBehaviour
         and set the player's parent to be the car in order to make
         the player move with the car
         */
-        player.transform.position = snapPointAboard.position;
-        player.transform.rotation = snapPointAboard.rotation;
-        player.transform.SetParent(snapPointAboard.parent);
+        // Snap the player to the car and wait before starting animation
+        StartCoroutine(SnapAndStartAnimation(snapPointAboard, "DriveToFarm", "farm", getOffUI, driveBackClip.length));
+    }
 
+    private IEnumerator SnapAndStartAnimation(Transform snapPoint, string animationTrigger, string destination, GameObject uiAfterAnimation, float animationDuration)
+    {
+        // Snap player to the specified snap point
+        player.transform.position = snapPoint.position;
+        player.transform.rotation = snapPoint.rotation;
+        player.transform.SetParent(snapPoint.parent);
 
-        // Trigger car animation
-        carAnimator.SetTrigger("DriveToFarm");
+        // Wait for 2 seconds before starting the animation
+        yield return new WaitForSeconds(2f);
 
-        // Set destination to farm
-        carDestination = "farm";
+        // Trigger the car animation
+        carAnimator.SetTrigger(animationTrigger);
 
-        // Start coroutine to show the "Aboard" UI after animation ends(drive back to farm)
-        StartCoroutine(ShowUIAfterAnimation(driveBackClip.length, getOffUI));
+        // Update the car's destination
+        carDestination = destination;
+
+        // Start coroutine to show the specified UI after the animation ends
+        StartCoroutine(ShowUIAfterAnimation(animationDuration, uiAfterAnimation));
+
+        Debug.Log("Position"+snapPoint.transform.position);
     }
     private IEnumerator ShowUIAfterAnimation(float duration, GameObject uiElement)
     {
