@@ -75,5 +75,10 @@ public class WheatField : MonoBehaviour
             cultivateUI.SetActive(false);
             sowUI.SetActive(true);
         }
+        if (Wy_GameManager.instance.sowedFieldCount == 4)
+        {
+            sowUI.SetActive(false);
+            
+        }
     }
 }
