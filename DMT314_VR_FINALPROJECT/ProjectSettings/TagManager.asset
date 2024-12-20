@@ -8,6 +8,9 @@ TagManager:
   - MeatCow
   - WY_Snap Grabbable
   - LX_EGG
+  - LX_Potato
+  - CinemachineTarget
+  - LX_Tomato
   layers:
   - Default
   - TransparentFX
