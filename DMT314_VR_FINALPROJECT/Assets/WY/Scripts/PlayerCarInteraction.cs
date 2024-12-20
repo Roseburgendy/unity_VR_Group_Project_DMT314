@@ -94,7 +94,6 @@ public class PlayerCarInteraction : MonoBehaviour
         // Start coroutine to show the specified UI after the animation ends
         StartCoroutine(ShowUIAfterAnimation(animationDuration, uiAfterAnimation));
 
-        Debug.Log("Position"+snapPoint.transform.position);
     }
     private IEnumerator ShowUIAfterAnimation(float duration, GameObject uiElement)
     {
