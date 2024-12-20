@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/WY/WY_Level 1.unity
+- path: Assets/ZYW/Scenes/MergeSceneInteract.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
