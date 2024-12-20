@@ -16,7 +16,8 @@ public class Wy_GameManager : MonoBehaviour
     private void Start()
     {
         cultivatedFieldCount = 4;
-        sowedFieldCount = 4;
+        sowedFieldCount = 0;
+        wateredFieldCount = 0;
     }
 
     public void IncrementCultivatedFieldCount()

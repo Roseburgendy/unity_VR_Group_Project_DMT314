@@ -19,6 +19,10 @@ public class WateringInteractionHandler : MonoBehaviour
         // Add events to wateringCan on runtime
         wateringCan.selectEntered.AddListener(OnWateringCanGrabbed);
         wateringCan.selectExited.AddListener(OnWateringCanReleased);
+
+        // Add events to left-hand ray interactor for watering
+        leftHandRayInteractor.hoverEntered.AddListener(OnFieldHovered);
+        leftHandRayInteractor.hoverExited.AddListener(OnFieldHoverExited);
     }
 
     private void OnDestroy()
@@ -26,8 +30,12 @@ public class WateringInteractionHandler : MonoBehaviour
         // Remove listeners
         wateringCan.selectEntered.RemoveListener(OnWateringCanGrabbed);
         wateringCan.selectExited.RemoveListener(OnWateringCanReleased);
+
+        leftHandRayInteractor.hoverEntered.RemoveListener(OnFieldHovered);
+        leftHandRayInteractor.hoverExited.RemoveListener(OnFieldHoverExited);
     }
 
+    /*
     private void Update()
     {
         // Condition to watering interaction:
@@ -39,30 +47,43 @@ public class WateringInteractionHandler : MonoBehaviour
             HandleWateringInteraction();
         }
     }
-
+    */
 
     private void OnWateringCanGrabbed(SelectEnterEventArgs args)
     {
         wateringCanGrabbed = true;
+        Debug.Log("Watering can grabbed!");
     }
 
     private void OnWateringCanReleased(SelectExitEventArgs args)
     {
         wateringCanGrabbed = false;
+        Debug.Log("Watering can released!");
     }
 
-    // Method to handle cultivation interaction
-    private void HandleWateringInteraction()
-    {
-        // Raycast from left hand ray interactor
-        Ray ray = new Ray(leftHandRayInteractor.transform.position, leftHandRayInteractor.transform.forward);
-        // Detect obstacle
-        if(Physics.Raycast(ray,out RaycastHit hit, Mathf.Infinity, fieldLayer))
-        {
-            Wy_GameManager.instance.wateringEffect.SetActive(true);
-            GameObject field = hit.collider.gameObject;
-            field.gameObject.GetComponentInParent<WheatField>().TriggerWateringEffect();           
-        }
 
+    private void OnFieldHovered(HoverEnterEventArgs args)
+    {
+        if (!wateringCanGrabbed) return; // Only allow interaction if watering can is grabbed
+
+        // Ensure the interactable is a WheatField
+        var field = args.interactableObject.transform.GetComponent<WheatField>();
+        if (field != null)
+        {
+            Debug.Log("Field selected for watering!");
+            field.StartWatering();
+        }
+    }
+
+    private void OnFieldHoverExited(HoverExitEventArgs args)
+    {
+        if (!wateringCanGrabbed) return; // Only allow interaction if watering can is grabbed
+        // Ensure the interactable is a WheatField
+        var field = args.interactableObject.transform.GetComponent<WheatField>();
+        if (field != null)
+        {
+            Debug.Log("Stopped watering field!");
+            field.StopWatering();
+        }
     }
 }
