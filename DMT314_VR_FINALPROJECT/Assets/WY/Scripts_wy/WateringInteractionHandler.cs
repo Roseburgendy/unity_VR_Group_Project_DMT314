@@ -8,62 +8,60 @@ public class WateringInteractionHandler : MonoBehaviour
 {
     public XRDirectInteractor rightHandBaseInteractor;
     public XRRayInteractor leftHandRayInteractor;
-    public XRGrabInteractable rake;
-    public LayerMask obstacleLayer;
+    public XRGrabInteractable wateringCan;
+    public LayerMask fieldLayer;
     //public GameObject destroyEffect;
 
-    private bool rakeGrabbed=false;
+    private bool wateringCanGrabbed=false;
 
     private void Start()
     {
-        // Add events to rake on runtime
-        rake.selectEntered.AddListener(OnRakeGrabbed);
-        rake.selectExited.AddListener(OnRakeReleased);
+        // Add events to wateringCan on runtime
+        wateringCan.selectEntered.AddListener(OnWateringCanGrabbed);
+        wateringCan.selectExited.AddListener(OnWateringCanReleased);
     }
 
     private void OnDestroy()
     {
         // Remove listeners
-        rake.selectEntered.RemoveListener(OnRakeGrabbed);
-        rake.selectExited.RemoveListener(OnRakeReleased);
+        wateringCan.selectEntered.RemoveListener(OnWateringCanGrabbed);
+        wateringCan.selectExited.RemoveListener(OnWateringCanReleased);
     }
 
     private void Update()
     {
-        // Condition to cultivation interaction:
-        // 1. grab the rake
+        // Condition to watering interaction:
+        // 1. grab the wateringCan
         // 2. activate ray in left hand
-        if(rakeGrabbed && leftHandRayInteractor.enabled)
+        if (wateringCanGrabbed && leftHandRayInteractor.enabled)
         {
-            Debug.Log("Rake Grabbed!");
-            HandleCultivationInteraction();
+            Debug.Log("WateringCan Grabbed!");
+            HandleWateringInteraction();
         }
     }
 
 
-    private void OnRakeGrabbed(SelectEnterEventArgs args)
+    private void OnWateringCanGrabbed(SelectEnterEventArgs args)
     {
-        rakeGrabbed = true;
+        wateringCanGrabbed = true;
     }
 
-    private void OnRakeReleased(SelectExitEventArgs args)
+    private void OnWateringCanReleased(SelectExitEventArgs args)
     {
-        rakeGrabbed = false;
+        wateringCanGrabbed = false;
     }
 
     // Method to handle cultivation interaction
-    private void HandleCultivationInteraction()
+    private void HandleWateringInteraction()
     {
         // Raycast from left hand ray interactor
         Ray ray = new Ray(leftHandRayInteractor.transform.position, leftHandRayInteractor.transform.forward);
         // Detect obstacle
-        if(Physics.Raycast(ray,out RaycastHit hit, Mathf.Infinity, obstacleLayer))
+        if(Physics.Raycast(ray,out RaycastHit hit, Mathf.Infinity, fieldLayer))
         {
-            GameObject obstacle = hit.collider.gameObject;
-            
-            // Destroy obstacles if detected
-            Destroy(obstacle);
-            Debug.Log($"Destroyed obstacle: {obstacle.name}");
+            Wy_GameManager.instance.wateringEffect.SetActive(true);
+            GameObject field = hit.collider.gameObject;
+            field.gameObject.GetComponentInParent<WheatField>().TriggerWateringEffect();           
         }
 
     }

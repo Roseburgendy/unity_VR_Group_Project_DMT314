@@ -6,6 +6,8 @@ public class Wy_GameManager : MonoBehaviour
 {
     public int cultivatedFieldCount;
     public int sowedFieldCount;
+    public int wateredFieldCount;
+    
     public static Wy_GameManager instance;
     private void Awake()
     {
@@ -13,8 +15,8 @@ public class Wy_GameManager : MonoBehaviour
     }
     private void Start()
     {
-        cultivatedFieldCount = 0;
-        sowedFieldCount = 0;
+        cultivatedFieldCount = 4;
+        sowedFieldCount = 4;
     }
 
     public void IncrementCultivatedFieldCount()
@@ -26,5 +28,10 @@ public class Wy_GameManager : MonoBehaviour
     {
         sowedFieldCount++;
         Debug.Log($"Sowed Field Count: {sowedFieldCount}");
+    }
+    public void IncrementWateredFieldCount()
+    {
+        wateredFieldCount++;
+        Debug.Log($"Watered Field Count: {wateredFieldCount}");
     }
 }
