@@ -7,9 +7,11 @@ public class FeedChicken : MonoBehaviour
     public Transform food;  // 鸡食槽的 Transform
     public float fillSpeed = 1f;   // 填充速度
     public float maxFill = 1f;       // 食槽最大填充量（0~1）
-    private float currentFill = 0f;  // 当前填充量
+    public float currentFill = 0f;  // 当前填充量
     private Vector3 lastPosition;    // 饲料的上一帧位置
     public Slider fillSlider;
+    //public GameObject particleSystemPrefab; // 粒子系统预制体
+    //public Transform particleSpawnPoint;  // 粒子系统生成位置
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class FeedChicken : MonoBehaviour
 
             // 更新 Slider 的值
             UpdateSlider(currentFill);
+
         }
 
         // 更新上一帧的位置
@@ -51,7 +54,7 @@ public class FeedChicken : MonoBehaviour
                Mathf.Abs(transform.position.y - feederPosition.y) < feederHeight;
     }
 
-    void UpdateFeederVisual(float fillAmount)
+    public void UpdateFeederVisual(float fillAmount)
     {
         // 计算 food 对象的新 Y 轴位置
         float newY = Mathf.Lerp(-0.2f, 0.2f, fillAmount);
@@ -62,9 +65,16 @@ public class FeedChicken : MonoBehaviour
 
         // 输出填充百分比
         Debug.Log($"Feeder Fill: {fillAmount * 100}%");
+
+        // 设置粒子系统的位置到指定生成点
+        //GameObject spawnedParticle = Instantiate(particleSystemPrefab, particleSpawnPoint.position, Quaternion.identity);
+
+        // 设置粒子系统自动销毁
+        //Destroy(spawnedParticle, 2f);
+
     }
 
-    void UpdateSlider(float fillAmount)
+    public void UpdateSlider(float fillAmount)
     {
         // 如果 Slider 存在，更新它的值
         if (fillSlider != null)
@@ -72,4 +82,5 @@ public class FeedChicken : MonoBehaviour
             fillSlider.value = fillAmount;
         }
     }
+
 }

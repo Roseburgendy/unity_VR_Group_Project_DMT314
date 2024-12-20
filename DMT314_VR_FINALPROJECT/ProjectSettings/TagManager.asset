@@ -7,6 +7,7 @@ TagManager:
   - MeatCowFence
   - MeatCow
   - WY_Snap Grabbable
+  - LX_EGG
   layers:
   - Default
   - TransparentFX
