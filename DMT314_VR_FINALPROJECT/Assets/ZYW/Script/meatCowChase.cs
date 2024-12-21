@@ -53,7 +53,7 @@ public class meatCowChase : MonoBehaviour
                     fenseTime = Time.time;
                     infense = true;
                 }
-                if (infense && (Time.time - fenseTime > 0.5f))
+                if (infense && (Time.time - fenseTime > 1.0f))
                 {
                     StopChasing();
                     cowState = CowState.Stay;
