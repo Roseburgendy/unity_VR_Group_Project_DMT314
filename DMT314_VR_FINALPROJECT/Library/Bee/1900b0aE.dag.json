@@ -31900,13 +31900,8 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp",
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2382368,
-      "PayloadLength": 38410,
-=======
       "PayloadOffset": 2228674,
       "PayloadLength": 35011,
->>>>>>> Stashed changes
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -31918,11 +31913,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2420865,
-=======
       "PayloadOffset": 2263772,
->>>>>>> Stashed changes
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -32234,11 +32225,16 @@
         "Assets/Shared Folder/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs",
         "Assets/Shared Folder/UI Kit Pro - Kawaii/Scripts/TabController.cs",
         "Assets/WY/QuickOutline/Scripts/Outline.cs",
-        "Assets/WY/Scripts/ChatBubble.cs",
-        "Assets/WY/Scripts/InventoryVisibility.cs",
-        "Assets/WY/Scripts/NPCInteract.cs",
-        "Assets/WY/Scripts/PlayerCarInteraction.cs",
-        "Assets/WY/Scripts/SnapZoneHandler.cs",
+        "Assets/WY/Scripts_wy/ChatBubble.cs",
+        "Assets/WY/Scripts_wy/CultivationInteractionHandler.cs",
+        "Assets/WY/Scripts_wy/InventoryVisibility.cs",
+        "Assets/WY/Scripts_wy/NPCInteract.cs",
+        "Assets/WY/Scripts_wy/PlayerCarInteraction.cs",
+        "Assets/WY/Scripts_wy/SnapZoneHandler.cs",
+        "Assets/WY/Scripts_wy/WateringInteractionHandler.cs",
+        "Assets/WY/Scripts_wy/WheatField.cs",
+        "Assets/WY/Scripts_wy/Wy_GameManager.cs",
+        "Assets/WY/Scripts_wy/Wy_LeftHandControllerManager.cs",
         "Assets/ZYW/Script/AssignCanvasEventCamera.cs",
         "Assets/ZYW/Script/ControllerManager.cs",
         "Assets/ZYW/Script/CowButtonInteraction.cs",
@@ -32654,13 +32650,8 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2420961,
-      "PayloadLength": 11125,
-=======
       "PayloadOffset": 2263868,
       "PayloadLength": 11365,
->>>>>>> Stashed changes
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
       "Outputs": [
@@ -32948,15 +32939,9 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.UnityAdditionalFile.txt",
       "DisplayName": "Writing Assembly-CSharp-Editor.UnityAdditionalFile.txt",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2432199,
-      "PayloadLength": 80,
-      "PayloadDebugContentSnippet": "D:\\VR\\VR_FINALPROJECTDMT314\\un",
-=======
       "PayloadOffset": 2275346,
       "PayloadLength": 99,
       "PayloadDebugContentSnippet": "E:\\DMT\\DMT3.1\\VR\\VR_FinalProje",
->>>>>>> Stashed changes
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.UnityAdditionalFile.txt"
@@ -32967,13 +32952,8 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.rsp",
       "DisplayName": "Writing Assembly-CSharp-Editor.rsp",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2432372,
-      "PayloadLength": 36494,
-=======
       "PayloadOffset": 2275538,
       "PayloadLength": 32833,
->>>>>>> Stashed changes
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -32985,11 +32965,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.rsp2",
       "DisplayName": "Writing Assembly-CSharp-Editor.rsp2",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2468960,
-=======
       "PayloadOffset": 2308465,
->>>>>>> Stashed changes
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -33354,13 +33330,8 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp-Editor.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
-<<<<<<< Updated upstream
-      "PayloadOffset": 2469063,
-      "PayloadLength": 11993,
-=======
       "PayloadOffset": 2308568,
       "PayloadLength": 12321,
->>>>>>> Stashed changes
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
       "Outputs": [
