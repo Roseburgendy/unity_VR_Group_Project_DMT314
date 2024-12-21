@@ -44,23 +44,6 @@ public class CultivationInteractionHandler : MonoBehaviour
         rakeGrabbed = false;
     }
 
-    // Method to handle cultivation interaction
-    private void HandleCultivationInteraction()
-    {
-        // Raycast from left hand ray interactor
-        Ray ray = new Ray(leftHandRayInteractor.transform.position, leftHandRayInteractor.transform.forward);
-        // Detect obstacle
-        if(Physics.Raycast(ray,out RaycastHit hit, Mathf.Infinity, obstacleLayer))
-        {
-            GameObject obstacle = hit.collider.gameObject;
-            
-            // Destroy obstacles if detected
-            Destroy(obstacle);
-            Debug.Log($"Destroyed obstacle: {obstacle.name}");
-        }
-
-    }
-
     private void OnObstacleHovered(HoverEnterEventArgs args)
     {
         // Ensure rake is grabbed before interacting

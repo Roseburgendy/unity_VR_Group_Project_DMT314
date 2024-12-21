@@ -12801,11 +12801,10 @@ MonoBehaviour:
   - {fileID: 801762201826494762}
   - {fileID: 1487420303540414072}
   - {fileID: 975813755845919254}
-  GrowthTime: 120
+  GrowthTime: 360
   growingUI: {fileID: 4613420261776667820}
   growthProgressBar: {fileID: 1530674471442741112}
   matureUI: {fileID: 7318050895516834778}
-  isCultivated: 1
   isSowed: 0
   isGrowing: 0
 --- !u!65 &1078825377412272856
