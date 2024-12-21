@@ -6,7 +6,7 @@ public class TomatoBoxController : MonoBehaviour
     public Slider boxSlider;           // Slider 用于显示当前进度
     //public Transform boxArea;          // 盒子区域的 Transform
     public int maxEggs = 3;            // 最大蛋数
-    private int currentEggs = 0;       // 当前蛋数
+    public int currentEggs = 0;       // 当前蛋数
 
     void Start()
     {
