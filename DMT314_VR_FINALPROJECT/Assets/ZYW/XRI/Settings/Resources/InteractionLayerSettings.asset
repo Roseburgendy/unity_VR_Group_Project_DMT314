@@ -20,9 +20,9 @@ MonoBehaviour:
   - Wy_SnapWaterCan
   - Wy_SnapRake
   - Wy_SnapSeed
-  - 
-  - 
-  - 
+  - Wy_Obstacles
+  - Wy_SnapPuzzle
+  - Wy_SnapBale
   - 
   - 
   - 

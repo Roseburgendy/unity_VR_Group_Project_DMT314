@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256398282830941872}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.04668027, y: 0.71402997, z: -0.6974117, w: -0.039989486}
+  m_LocalRotation: {x: -0.046674404, y: 0.71402663, z: -0.6974156, w: -0.03998654}
   m_LocalPosition: {x: -71.54401, y: 0.367, z: 77.484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 8839936635582627050}
   - component: {fileID: 3219190067906483129}
   m_Layer: 0
-  m_Name: RakeVisual (1)
+  m_Name: RakeVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

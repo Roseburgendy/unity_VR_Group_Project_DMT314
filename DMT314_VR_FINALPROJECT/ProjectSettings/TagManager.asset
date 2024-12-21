@@ -7,10 +7,8 @@ TagManager:
   - MeatCowFence
   - MeatCow
   - WY_Snap Grabbable
-  - LX_EGG
-  - LX_Potato
   - CinemachineTarget
-  - LX_Tomato
+  - WY_Obstacles
   layers:
   - Default
   - TransparentFX
@@ -29,8 +27,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Wy_Obstacles
+  - Wy_Field
   - 
   - 
   - 

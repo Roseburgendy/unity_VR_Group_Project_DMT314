@@ -1675,6 +1675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WateringFX
       objectReference: {fileID: 0}
+    - target: {fileID: 4318631590790908874, guid: d2eb6a0492e8ef64c9e0c034b9945581, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6947981979805557602, guid: d2eb6a0492e8ef64c9e0c034b9945581, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

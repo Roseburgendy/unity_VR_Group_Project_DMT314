@@ -8,63 +8,82 @@ public class WateringInteractionHandler : MonoBehaviour
 {
     public XRDirectInteractor rightHandBaseInteractor;
     public XRRayInteractor leftHandRayInteractor;
-    public XRGrabInteractable rake;
-    public LayerMask obstacleLayer;
+    public XRGrabInteractable wateringCan;
+    public LayerMask fieldLayer;
     //public GameObject destroyEffect;
 
-    private bool rakeGrabbed=false;
+    private bool wateringCanGrabbed=false;
 
     private void Start()
     {
-        // Add events to rake on runtime
-        rake.selectEntered.AddListener(OnRakeGrabbed);
-        rake.selectExited.AddListener(OnRakeReleased);
+        // Add events to wateringCan on runtime
+        wateringCan.selectEntered.AddListener(OnWateringCanGrabbed);
+        wateringCan.selectExited.AddListener(OnWateringCanReleased);
+
+        // Add events to left-hand ray interactor for watering
+        leftHandRayInteractor.hoverEntered.AddListener(OnFieldHovered);
+        leftHandRayInteractor.hoverExited.AddListener(OnFieldHoverExited);
     }
 
     private void OnDestroy()
     {
         // Remove listeners
-        rake.selectEntered.RemoveListener(OnRakeGrabbed);
-        rake.selectExited.RemoveListener(OnRakeReleased);
+        wateringCan.selectEntered.RemoveListener(OnWateringCanGrabbed);
+        wateringCan.selectExited.RemoveListener(OnWateringCanReleased);
+
+        leftHandRayInteractor.hoverEntered.RemoveListener(OnFieldHovered);
+        leftHandRayInteractor.hoverExited.RemoveListener(OnFieldHoverExited);
     }
 
+    /*
     private void Update()
     {
-        // Condition to cultivation interaction:
-        // 1. grab the rake
+        // Condition to watering interaction:
+        // 1. grab the wateringCan
         // 2. activate ray in left hand
-        if(rakeGrabbed && leftHandRayInteractor.enabled)
+        if (wateringCanGrabbed && leftHandRayInteractor.enabled)
         {
-            Debug.Log("Rake Grabbed!");
-            HandleCultivationInteraction();
+            Debug.Log("WateringCan Grabbed!");
+            HandleWateringInteraction();
+        }
+    }
+    */
+
+    private void OnWateringCanGrabbed(SelectEnterEventArgs args)
+    {
+        wateringCanGrabbed = true;
+        Debug.Log("Watering can grabbed!");
+    }
+
+    private void OnWateringCanReleased(SelectExitEventArgs args)
+    {
+        wateringCanGrabbed = false;
+        Debug.Log("Watering can released!");
+    }
+
+
+    private void OnFieldHovered(HoverEnterEventArgs args)
+    {
+        if (!wateringCanGrabbed) return; // Only allow interaction if watering can is grabbed
+
+        // Ensure the interactable is a WheatField
+        var field = args.interactableObject.transform.GetComponent<WheatField>();
+        if (field != null)
+        {
+            Debug.Log("Field selected for watering!");
+            field.StartWatering();
         }
     }
 
-
-    private void OnRakeGrabbed(SelectEnterEventArgs args)
+    private void OnFieldHoverExited(HoverExitEventArgs args)
     {
-        rakeGrabbed = true;
-    }
-
-    private void OnRakeReleased(SelectExitEventArgs args)
-    {
-        rakeGrabbed = false;
-    }
-
-    // Method to handle cultivation interaction
-    private void HandleCultivationInteraction()
-    {
-        // Raycast from left hand ray interactor
-        Ray ray = new Ray(leftHandRayInteractor.transform.position, leftHandRayInteractor.transform.forward);
-        // Detect obstacle
-        if(Physics.Raycast(ray,out RaycastHit hit, Mathf.Infinity, obstacleLayer))
+        if (!wateringCanGrabbed) return; // Only allow interaction if watering can is grabbed
+        // Ensure the interactable is a WheatField
+        var field = args.interactableObject.transform.GetComponent<WheatField>();
+        if (field != null)
         {
-            GameObject obstacle = hit.collider.gameObject;
-            
-            // Destroy obstacles if detected
-            Destroy(obstacle);
-            Debug.Log($"Destroyed obstacle: {obstacle.name}");
+            Debug.Log("Stopped watering field!");
+            field.StopWatering();
         }
-
     }
 }

@@ -19,6 +19,9 @@ public class CultivationInteractionHandler : MonoBehaviour
         // Add events to rake on runtime
         rake.selectEntered.AddListener(OnRakeGrabbed);
         rake.selectExited.AddListener(OnRakeReleased);
+
+        // Add listeners for hover events
+        leftHandRayInteractor.hoverEntered.AddListener(OnObstacleHovered);
     }
 
     private void OnDestroy()
@@ -26,18 +29,8 @@ public class CultivationInteractionHandler : MonoBehaviour
         // Remove listeners
         rake.selectEntered.RemoveListener(OnRakeGrabbed);
         rake.selectExited.RemoveListener(OnRakeReleased);
-    }
 
-    private void Update()
-    {
-        // Condition to cultivation interaction:
-        // 1. grab the rake
-        // 2. activate ray in left hand
-        if(rakeGrabbed && leftHandRayInteractor.enabled)
-        {
-            Debug.Log("Rake Grabbed!");
-            HandleCultivationInteraction();
-        }
+        leftHandRayInteractor.hoverEntered.RemoveListener(OnObstacleHovered);
     }
 
 
@@ -66,5 +59,20 @@ public class CultivationInteractionHandler : MonoBehaviour
             Debug.Log($"Destroyed obstacle: {obstacle.name}");
         }
 
+    }
+
+    private void OnObstacleHovered(HoverEnterEventArgs args)
+    {
+        // Ensure rake is grabbed before interacting
+        if (!rakeGrabbed) return;
+
+        // Check if the hovered object is an obstacle
+        var obstacle = args.interactableObject.transform.GetComponent<Collider>();
+        if (obstacle != null && ((1 << obstacle.gameObject.layer) & obstacleLayer) != 0)
+        {
+            // Destroy the obstacle
+            Destroy(obstacle.gameObject);
+            Debug.Log($"Destroyed obstacle: {obstacle.gameObject.name}");
+        }
     }
 }
