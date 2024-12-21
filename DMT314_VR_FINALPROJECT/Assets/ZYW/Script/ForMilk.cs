@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ForMilk : MonoBehaviour
 {
-    public Image img_ring;         // 环形进度条
+    public Slider sliderProgress; // Slider 条形进度条
     public GameObject btn;         // 按钮对象
     public Transform bin;          // 存放Cube的盒子
     public Canvas specialCanvas;   // 特定的Canvas
@@ -21,7 +21,6 @@ public class ForMilk : MonoBehaviour
         {
             if (finish)
                 return;
-            btn.SetActive(false);
             hovering = true;
         });
 
@@ -44,13 +43,16 @@ public class ForMilk : MonoBehaviour
         {
             progress += Time.deltaTime * 0.5f;
         }
-        img_ring.fillAmount = progress;
+        sliderProgress.value = progress;
 
         // 如果进度条完成
         if (progress >= 1)
         {
-            img_ring.fillAmount = 0;
+            sliderProgress.value = 1;
             finish = true;
+
+            // 隐藏按钮
+            btn.SetActive(false);
 
             // 判断第一个Cube是否激活
             bool first = !bin.transform.GetChild(0).gameObject.activeSelf;
